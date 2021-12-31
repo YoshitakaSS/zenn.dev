@@ -1,0 +1,245 @@
+{
+    "appendix": {
+        "discountData": []
+    },
+    "reservation": {
+        "dtr": [
+            {
+                "cmApplicationId": "721538",
+                "currency": "JPY",
+                "lang": "ja",
+                "totalPrice": 54140,
+                "totalOtherPrice": 54140,
+                "totalOriginalPrice": 53140,
+                "totalOtherOriginalPrice": 54140,
+                "localPayment": false,
+                "discountData": [],
+                "isPoint": false,
+                "pointData": [],
+                "detail": {
+                    "da": [
+                        {
+                            "cmApplicationId": "721538",
+                            "currency": "JPY",
+                            "lang": "ja",
+                            "totalPrice": 43620,
+                            "totalOtherPrice": 43620,
+                            "totalOriginalPrice": 43620,
+                            "totalOtherOriginalPrice": 43620,
+                            "localPayment": false,
+                            "discountData": [],
+                            "isPoint": false,
+                            "pointData": {
+                                "basicPrice": 43620,
+                                "basicAt": "2022-01-24 12:40:00",
+                                "pointCd": "pointCd01",
+                                "bonusData": [
+                                    {
+                                        "bonusCd": "bns1001"
+                                    }
+                                ]
+                            },
+                            "detail": {
+                                "jp": {
+                                    "totalPrice": 68120,
+                                    "totalOtherPrice": 68120,
+                                    "userId": 206,
+                                    "applicantFamilyName": "zm4iMNDILdg=",
+                                    "applicantFirstName": "7qhiCUTUnClBr3PxajZmSQ==",
+                                    "applicantFamilyNameKana": "+bXJsUsKlrvh16BpN6+lPg==",
+                                    "applicantFirstNameKana": "pDezjqG3Www+MJBfYtdKqQ==",
+                                    "tel": "cdW4EC7q5MkCp5zBD4NmaQ==",
+                                    "localContact": "zy0jMWVf68ggO7KS6Cq91d0bT4Jj76O3FrPjbYFUAPc=",
+                                    "email": "zy0jMWVf68ggO7KS6Cq91d0bT4Jj76O3FrPjbYFUAPc=",
+                                    "birth": "1990-01-01",
+                                    "gender": "Male",
+                                    "advertisingCode": "",
+                                    "paymentLimit": "2021-11-29 15:00:00",
+                                    "systemFee": 0,
+                                    "detail": [
+                                        {
+                                            "flightNo": "SKY774",
+                                            "departure": {
+                                                "airportCode": "CTS",
+                                                "dateTime": "2021-12-08 15:10:00"
+                                            },
+                                            "arrival": {
+                                                "airportCode": "FUK",
+                                                "dateTime": "2021-12-08 18:00:00"
+                                            },
+                                            "isRefundable": true,
+                                            "passenger": {
+                                                "adult": {
+                                                    "pax": 2,
+                                                    "tax": 0,
+                                                    "flightPrice": 11980,
+                                                    "flightOtherPrice": 11980,
+                                                    "flightOriginalPrice": 11980,
+                                                    "flightOtherOriginalPrice": 11980,
+                                                    "handlingCharge": 2200,
+                                                    "handlingOtherCharge": 2200,
+                                                    "customers": [
+                                                        {
+                                                            "familyName": "WoVcNsOHAVo=",
+                                                            "firstName": "bTNGiZFxMdo=",
+                                                            "familyNameKana": "XVqgtTcpMVcUg0K2pg2tvg==",
+                                                            "firstNameKana": "G4Nb2iSeFdE=",
+                                                            "no": "",
+                                                            "country": "",
+                                                            "birth": {
+                                                                "y": "1982",
+                                                                "m": "03",
+                                                                "d": "05"
+                                                            },
+                                                            "gender": "Female",
+                                                            "baggage": "",
+                                                            "baggagePrice": 0,
+                                                            "baggageOtherPrice": 0,
+                                                            "seat": "",
+                                                            "seatPrice": 0,
+                                                            "seatOtherPrice": 0
+                                                        },
+                                                        {
+                                                            "familyName": "zm4iMNDILdg=",
+                                                            "firstName": "7qhiCUTUnClBr3PxajZmSQ==",
+                                                            "familyNameKana": "+bXJsUsKlrvh16BpN6+lPg==",
+                                                            "firstNameKana": "pDezjqG3Www+MJBfYtdKqQ==",
+                                                            "no": "",
+                                                            "country": "JPN",
+                                                            "birth": {
+                                                                "y": "1990",
+                                                                "m": "01",
+                                                                "d": "01"
+                                                            },
+                                                            "gender": "Male",
+                                                            "baggage": "",
+                                                            "baggagePrice": 0,
+                                                            "baggageOtherPrice": 0,
+                                                            "seat": "",
+                                                            "seatPrice": 0,
+                                                            "seatOtherPrice": 0
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "flightNo": "SKY773",
+                                            "departure": {
+                                                "airportCode": "FUK",
+                                                "dateTime": "2021-12-09 14:25:00"
+                                            },
+                                            "arrival": {
+                                                "airportCode": "CTS",
+                                                "dateTime": "2021-12-09 16:40:00"
+                                            },
+                                            "isRefundable": true,
+                                            "passenger": {
+                                                "adult": {
+                                                    "pax": 2,
+                                                    "tax": 0,
+                                                    "flightPrice": 17680,
+                                                    "flightOtherPrice": 17680,
+                                                    "flightOriginalPrice": 11980,
+                                                    "flightOtherOriginalPrice": 11980,
+                                                    "handlingCharge": 2200,
+                                                    "handlingOtherCharge": 2200,
+                                                    "customers": [
+                                                        {
+                                                            "familyName": "WoVcNsOHAVo=",
+                                                            "firstName": "bTNGiZFxMdo=",
+                                                            "familyNameKana": "XVqgtTcpMVcUg0K2pg2tvg==",
+                                                            "firstNameKana": "G4Nb2iSeFdE=",
+                                                            "no": "",
+                                                            "country": "",
+                                                            "birth": {
+                                                                "y": "1982",
+                                                                "m": "03",
+                                                                "d": "05"
+                                                            },
+                                                            "gender": "Female",
+                                                            "baggage": "",
+                                                            "baggagePrice": 0,
+                                                            "baggageOtherPrice": 0,
+                                                            "seat": "",
+                                                            "seatPrice": 0,
+                                                            "seatOtherPrice": 0
+                                                        },
+                                                        {
+                                                            "familyName": "zm4iMNDILdg=",
+                                                            "firstName": "7qhiCUTUnClBr3PxajZmSQ==",
+                                                            "familyNameKana": "+bXJsUsKlrvh16BpN6+lPg==",
+                                                            "firstNameKana": "pDezjqG3Www+MJBfYtdKqQ==",
+                                                            "no": "",
+                                                            "country": "JPN",
+                                                            "birth": {
+                                                                "y": "1990",
+                                                                "m": "01",
+                                                                "d": "01"
+                                                            },
+                                                            "gender": "Male",
+                                                            "baggage": "",
+                                                            "baggagePrice": 0,
+                                                            "baggageOtherPrice": 0,
+                                                            "seat": "",
+                                                            "seatPrice": 0,
+                                                            "seatOtherPrice": 0
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ],
+                    "ht": [
+                        {
+                            "cmApplicationId": 721359,
+                            "totalPrice": 5152,
+                            "totalOtherPrice": 6191,
+                            "totalOriginalPrice": 68120,
+                            "totalOtherOriginalPrice": 68120,
+                            "currency": "JPY",
+                            "localPayment": false,
+                            "lang": "ja",
+                            "discountData": [],
+                            "isPoint": false,
+                            "pointData": [],
+                            "detail": {
+                                "jp": {
+                                    "applicant": {
+                                        "userId": 1506507,
+                                        "familyName": "zm4iMNDILdg=",
+                                        "firstName": "7qhiCUTUnClBr3PxajZmSQ==",
+                                        "tel": "cdW4EC7q5MkCp5zBD4NmaQ==",
+                                        "email": "zy0jMWVf68ggO7KS6Cq91d0bT4Jj76O3FrPjbYFUAPc="
+                                    },
+                                    "hotelDetail": {
+                                        "propertyId": 15840,
+                                        "postalCode": "8100801",
+                                        "countryCode": "JP",
+                                        "roomsCount": 1,
+                                        "checkInDate": "2021-12-08T00:00:00",
+                                        "checkOutDate": "2021-12-09T00:00:00",
+                                        "hotelName": "博多エクセルホテル東急",
+                                        "hotelAddress": "福岡県福岡市博多区中洲 4-6-7",
+                                        "hotelPhoneNumber": "",
+                                        "state": "福岡県",
+                                        "city": "福岡市",
+                                        "plan": "[禁煙] セミダブルルーム/[禁煙] セミダブルルーム",
+                                        "exclusiveTaxPrice": 5152,
+                                        "tax": 1039,
+                                        "handlingCharge": 0,
+                                        "isRefundable": true
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,22 @@
+- totalPrice
+  - （table) cm_th_application.total_price
+- totalOtherPrice
+  - (table) cm_th_application.total_other_price
+- totalOriginalPrice（
+  - 以下の合計値
+  - reservation.dtr.detail.da.totalOriginalPrice
+  - reservation.dtr.detail.ht.totalOriginalPrice
+  - reservation.dtr.detail.rc.totalOriginalPrice
+- localPayment
+  - false 固定
+- pointData
+  - []（空配列）
+- discountData
+  - 以下の配列マージ
+  - reservation.dtr.detail.da.discountData
+  - reservation.dtr.detail.ht.discountData
+  - reservation.dtr.detail.rc.discountData
+  - ※但し、ツアーの場合は、各サービスのデータを空にする必要あり
+    - reservation.dtr.detail.da.discountData
+    - reservation.dtr.detail.ht.discountData
+    - reservation.dtr.detail.rc.discountData
