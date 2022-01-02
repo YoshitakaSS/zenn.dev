@@ -1,12 +1,12 @@
 ---
-title: "GitHubActionsでテストカバレッジ率を出力して品質を可視化する"
-emoji: "✅"
+title: "GitHubActionsでテストカバレッジ率を出力してコード品質を可視化する"
+emoji: "📈"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["php", "githubactions", "ci"]
+topics: ["php", "GitHubActions", "CI", "PHPUnit"]
 published: false
 ---
 
-自称コード品質保全委員会です。
+Zenn初投稿！！自称コード品質保全委員会です。
 GitHubActionsを利用して、以下のようにプルリクにテストカバレッジ率を出力しレビュアーにテストをやってることを可視化したいと思います。
 ![Test_Coverrage_Summary](/images/github-actions-test-summary/Test_Coverrage_Summary.png)
 
@@ -17,6 +17,8 @@ GitHubを使用したプロジェクトであれば、どのプロジェクト�
 [Codecovを使ってカバレッジを計測する](https://qiita.com/nasum/items/aff9bf09d49b136bbf94)
 [Codecov](https://about.codecov.io/)
 
+※当記事ではPHPとPHPUnitを使用していますが、GitHubActionsを使用したBotコメントの方法などは他の言語とかでも流用出来るので見てくださいまし
+
 **この記事で説明すること**
 
 - カバレッジ率のサマリーの出し方
@@ -25,6 +27,24 @@ GitHubを使用したプロジェクトであれば、どのプロジェクト�
 **この記事で説明しないこと**
 - UnitTestの説明
 - GitHubActionsの初期設定など
+
+**この記事で使用した環境など**
+- PHP 8.0.13
+- Laravel Framework 6.20.43
+- PHPUnit 9.5.10
+```shell
+root@11c4d9a174c5:/var/www/test# php -v
+PHP 8.0.13 (cli) (built: Nov 19 2021 22:11:30) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v4.0.13, Copyright (c) Zend Technologies
+    with Xdebug v3.1.1, Copyright (c) 2002-2021, by Derick Rethans
+
+root@11c4d9a174c5:/var/www/test# php artisan -V
+Laravel Framework 6.20.43
+
+root@11c4d9a174c5:/var/www/test# php vendor/phpunit/phpunit/phpunit --version
+PHPUnit 9.5.10 by Sebastian Bergmann and contributors.
+```
 
 
 ### 1: UnitTestを実行する
@@ -249,3 +269,18 @@ jobs:
           name: code-coverage-report
           path: ./src/storage/logs/coverage-summary.log
 ```
+
+#### 最後に
+
+テストの可視化大事。（自動化するのも大事）
+テストが大事なのは言わずもがなですが、「このプロジェクトの前からあるけど、品質ってどうなの？」と偉い人に言われたときに、テスト自体(成果物)とその報告できる数字(成果物のエビデンス)があると、諸々便利だなってことが分かってきました。
+
+偉い人からしたり、プロジェクトから関わっていない人からすると、数字的な指標がないと「動いてるからとりあえずは平気なものなんか？」「品質は大丈夫なんか？」と不安材料が残ります。
+
+ただ、こういったテスト結果を数字で見せられるところに残し続けておけば、偉い人も今後プロジェクトに関わる人も諸々安心材料として動きやすくなるのかなあと。改善あるのみ〜。
+
+**※Follow&❤️してくれると励みになります。**
+#### 参考記事
+
+- [GitHub Actionsでカバレッジを可視化する
+](https://zenn.dev/katzumi/articles/995df5abebc91e312167)
