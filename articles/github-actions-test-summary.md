@@ -118,7 +118,8 @@ Error: Process completed with exit code 2.
           path: ./src/storage/logs/coverage-summary.log
 ```
 読み込むファイルを指定します。
-上記で出力結果をフォーマットしたファイルがあるので、そちらを指定。
+上記で出力結果をフォーマットしたファイルがあるのでそちらを指定。
+`id`はこの後のプロセスで使用するので、必ず指定してください。
 
 ### 5: UnitTestの結果(レポート)をGitHubで自動でコメントする
 
@@ -134,8 +135,8 @@ Error: Process completed with exit code 2.
 ```
 
 messageの部分が実際にコメントする内容。
-` ${{ steps.ID指定.outputs.content }}`
-上記**③: UnitTestの結果を読み込む**で指定したIDを使用することで、こちらでテスト結果のファイルを出力することが可能です。
+` ${{ steps.先ほど指定したプロセスID.outputs.content }}`
+上記の **3: UnitTestの結果を読み込む** で指定したIDを使用することで、こちらでテスト結果のファイルを出力することが可能です。
 
 このActionの便利なところは、新規にコメントを行うのではなく、コメントを上書きしてくれるところ。履歴も残ります。
 ![GitHub_Comment_Rivision](/images/github-actions-test-summary/GitHub_Comment_Rivision.png)
@@ -279,7 +280,7 @@ jobs:
 
 ただ、こういったテスト結果を数字で見せられるところに残し続けておけば、偉い人も今後プロジェクトに関わる人も諸々安心材料として動きやすくなるのかなあと。改善あるのみ〜。
 
-**※Follow&❤️してくれると励みになります。**
+**※Follow&❤️してくれると励みになります**
 #### 参考記事
 
 - [GitHub Actionsでカバレッジを可視化する
