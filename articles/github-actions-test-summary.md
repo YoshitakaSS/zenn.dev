@@ -3,7 +3,7 @@ title: "GitHubActionsでテストカバレッジ率を出力してコード品�
 emoji: "📈"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["php", "GitHubActions", "CI", "PHPUnit"]
-published: false
+published: true
 ---
 
 Zenn初投稿！！自称コード品質保全委員会です。
