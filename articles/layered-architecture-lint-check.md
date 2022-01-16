@@ -2,11 +2,12 @@
 title: "レイヤードアーキテクチャのコード品質を守りたい！"
 emoji: "🛡"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["CI", "PHP", "Laravel", "GitHubActions", "DepOps"]
+topics: ["CI", "PHP", "Laravel", "GitHubActions"]
 published: false
 ---
 
-最近流行っているレイヤードアークテクチャ、クリーンアーキテクチャ、DDD..etc
+自称コード品質保全委員会です！
+いきなりですが、最近流行っているレイヤードアークテクチャ、クリーンアーキテクチャ、DDD..etc。
 色々な知見を活かしてせっかく導入したは良いけど、その品質どうやって担保していますか？
 
 - もし導入した人がいなくなってしまったら...
@@ -52,10 +53,10 @@ Deptrac can be used in a CI pipeline to make sure a pull request does not violat
 例えば、Deptracを使用して、プロジェクト内のバンドル/モジュール/拡張機能が互いに真に独立していることを確認し、再利用を容易にすることができます。
 DeptracはCIパイプラインで使用され、プルリクエストが定義したアーキテクチャルールに違反していないことを確認することができます。オプションのGraphviz formatterを使えば、レイヤー、ルール、違反を可視化することができます。
 
-※ここが重要
-**クラスに対するアーキテクチャの階層を自由に定義し、どのルールを適用させるかを決めることができます**
-なので、自分のプロジェクトに合わせて色々なカスタマイズすることができるので魅力的〜。
-「Aのプロジェクトだとヘキサゴナルアーキテクチャ」「Bのプロジェクトだとオニオンアーキテクチャ」でやりたいみたいな事も設定上可能。
+**クラスに対するアーキテクチャの階層を自由に定義し、どのルールを適用させるかを決めることができます**（※ここが重要）
+
+なので、自分のプロジェクトに合わせて色々なカスタマイズすることができます。
+「Aのプロジェクトだとヘキサゴナルアーキテクチャ」「Bのプロジェクトだとオニオンアーキテクチャ」でやりたいみたいな事も設定上可能です。触って見た感じ結構柔軟に設定できます。
 
 ### Deptracの導入方法
 
@@ -152,18 +153,30 @@ Errors               0
 -------------------- ----- 
 ```
 
+#### DeptracのReport内容
 :::message
-**Violations:** 依存関係が守られていないもの
-**Skipped violations**: 依存関係を一旦無視したもの
-**Uncovered:** 依存関係が定義されていないもの
-**Allowed:** 依存関係チェック済みなもの
-**Warnings:** 依存関係の指定がミスってるもの（2つ以上のレイヤーから依存している場合など
-**Errors:** 記法ミスってんぞ
+- **Violations:**
+    - 依存関係が守られていないもの
+- **Skipped violations**
+    - 依存関係を一旦無視したもの
+- **Uncovered:**
+    - 依存関係が定義されていないもの
+- **Allowed:**
+    - 依存関係チェック済みなもの
+- **Warnings:**
+    - 依存関係の指定がミスってるもの（2つ以上のレイヤーから依存している場合など
+- **Errors:**
+    - 記法ミスってんぞ
 :::
 
 ### Deptracの記法ルール
 
 基本的には以下の2種類の書き方を各々のプロジェクトに合わせる必要がある。
+
+**`paths`**, **`exclude_files`** については特に記法も何もないので、**`layers`** と **`ruleset`** だけ記述します。
+
+:::message
+
 - **`paths`**
     - ルールを適用するディレクトリを指定
 - **`exclude_files`**
@@ -173,30 +186,7 @@ Errors               0
     UseCase/Application層、Domain層、Infra層といったレイヤー名の定義を行う
 - **`ruleset`**
     - 依存方向の定義
-
-```yml
-layers:
-  - name: Controller
-    collectors:
-      - type: className
-        regex: .*Controller.*
-  - name: Service
-    collectors:
-      - type: className
-        regex: .*Service.*
-  - name: Repository
-    collectors:
-      - type: className
-        regex: .*Repository.*
-ruleset:
-  Controller:
-    - Service
-  Service:
-    - Repository
-  Repository: ~
-```
-
-**`paths`**, **`exclude_files`** については特に記法も何もないので、**`layers`** と **`ruleset`** だけ記述します。
+:::
 
 ### `layers`の指定
 
@@ -209,7 +199,7 @@ layers:
 ```
 
 各種レイヤーの指定を行います。レイヤーの記入する順番は依存性の矢印（上から下）に揃える必要性は記法的にはないですが、可読性のために揃えた方がいいです。
-サンプルの例だと以下の3つのレイヤーで構成されており、依存性の方向は上から下ですね。
+サンプルの例だと以下の3つのレイヤーで構成されており、**依存性の方向は上から下ですね。**
 
 - Controller
 - Serivce
@@ -217,7 +207,7 @@ layers:
 
 DDD×Laravalとかの導入であれば、以下みたいなレイヤーになるかな。
 
-- Controller / Presenter / Handler / Adapter / Action(ADRの場合など)
+- Controller / Presenter / Handler / Adapter / Action
 - UseCase / Applicatoin
 - Domain
 - Infrastructure
@@ -367,7 +357,7 @@ Errors               0
 -------------------- ----- 
 ```
 
-### `Uncovered`エラーについて
+### ※`Uncovered`エラーについて
 
 DeptracのReportを見ると **`Uncovered`** の数字が増えていく場合があります。
 標準の出力では表示されず、`--report-uncovered`のオプションをつけることで表示されます。
@@ -427,3 +417,19 @@ jobs:
         run: php vendor/bin/deptrac analyse
         working-directory: ./src
 ```
+
+### 最後に
+
+こんな感じでレイヤーを意識した開発の手助けになってくれる静的解析ツールの紹介でございやした。全てを網羅してチェックするのは難しいですが、品質を維持する上では割と最初のうちに導入したほうがいいかな、と個人的には思いました。
+
+**コードレビューも割と限界がある。人の目でだけで確認するのは基本NG。**
+自動化でチェックできる部分はチェックしよう。
+
+コードの品質を守りつつ、より良いプロジェクトにする為に自称コード品質保全委員会は今日も戦います。（続く...知らんけど...）
+
+**※Follow&❤️してくれると励みになります**
+
+#### 参考記事
+
+https://bestofphp.com/repo/sensiolabs-de-deptrac-php-code-analysis
+https://engineering.otobank.co.jp/entry/2021/01/25/185242
