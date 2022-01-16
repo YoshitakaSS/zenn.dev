@@ -2,7 +2,7 @@
 title: "レイヤードアーキテクチャのコード品質を守りたい！"
 emoji: "🛡"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["CI", "PHP", "Laravel"]
+topics: ["CI", "PHP", "Laravel", "GitHubActions", "DepOps"]
 published: false
 ---
 
@@ -40,7 +40,7 @@ Laravel Framework 6.20.43
 
 ## レイヤードアーキテクチャの品質を守る「Deptrac」
 
-PHP専用となっています。誰か他の言語でも使えるように拡張してくれ。
+紹介するツールはPHP専用となっています。誰か他の言語でも使えるように拡張してくれ。
 https://github.com/qossmic/deptrac?ref=bestofphp.com
 
 ### Deptracとは？
@@ -143,7 +143,7 @@ php vendor/bin/deptrac analyse
 -------------------- ----- 
 Report                    
 -------------------- ----- 
-Violations           25   
+Violations           1  
 Skipped violations   0    
 Uncovered            65   
 Allowed              888  
@@ -164,8 +164,15 @@ Errors               0
 ### Deptracの記法ルール
 
 基本的には以下の2種類の書き方を各々のプロジェクトに合わせる必要がある。
-- `layer`
-- `ruleset`
+- **`paths`**
+    - ルールを適用するディレクトリを指定
+- **`exclude_files`**
+    - ルールを除外するファイルを指定
+- **`layer`**
+    - レイヤー名の定義
+    UseCase/Application層、Domain層、Infra層といったレイヤー名の定義を行う
+- **`ruleset`**
+    - 依存方向の定義
 
 ```yml
 layers:
@@ -188,6 +195,8 @@ ruleset:
     - Repository
   Repository: ~
 ```
+
+**`paths`**, **`exclude_files`** については特に記法も何もないので、**`layers`** と **`ruleset`** だけ記述します。
 
 ### `layers`の指定
 
@@ -319,4 +328,102 @@ ruleset:
   Service:
     - Repository
   Repository: ~
+```
+
+上記のルールとセットだと、以下のような記載をすると「ControllerがInfraに依存しちゃダメよ」というエラーになります。
+
+```php
+class TestController extends Controller
+{
+    # ❌パターン
+    public function __construct(TestRepository $testRepository)
+    {
+        $this->testRepository = $testRepository;
+    }
+
+    # ⭕️パターン
+    public function __construct(TestService $testService)
+    {
+        $this->testService = $testService;
+    }
+}
+```
+
+```bash
+ ----------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Reason      Controller                                                                                                                                                          
+ ----------- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+  Violation   App\Http\Controlller\TestController must not depend on \App\Infrastructre\TestRepository (Infrasturcutre
+
+-------------------- ----- 
+Report                    
+-------------------- ----- 
+Violations           1  # エラーになるとここの数字が増えます
+Skipped violations   0    
+Uncovered            0   
+Allowed              0
+Warnings             0    
+Errors               0    
+-------------------- ----- 
+```
+
+### `Uncovered`エラーについて
+
+DeptracのReportを見ると **`Uncovered`** の数字が増えていく場合があります。
+標準の出力では表示されず、`--report-uncovered`のオプションをつけることで表示されます。
+LaravelなどのFWに元々組み込まれている`Illuminate~`関連がこのLintに引っかかります。
+
+```bash
+php vendor/bin/deptrac analyse --report-uncovered
+
+477/477 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] 100%
+
+-------------------- ----- 
+Report                    
+-------------------- ----- 
+Violations           0  
+Skipped violations   0    
+Uncovered            1  // これ  
+Allowed              476
+Warnings             0    
+Errors               0    
+-------------------- ----- 
+
+Uncovered dependencies:
+App\Http\Controlller\TestController has uncovered dependency on Illuminate\Http\Request (Controller)
+/src/app/Http/Contrlller/TestController.php::12
+```
+
+全てを網羅するのは結構酷なので、区切りの良いところで止めるのが吉です。
+最低限守りたい部分だけ守れるようにしましょう。
+
+## DeptracをCIに組み込む
+
+GitHub Actionsと仮定してます。
+以下で作成してLintCheckを行いましょう。これで自動チェック完了。
+
+```yml
+name: LintCheck
+on: [push]
+
+jobs:
+  lint-c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache vendor
+        id: cache
+        uses: actions/cache@v1
+        with:
+          path: ./vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('./composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: composer install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: composer install -qn --no-interaction --no-scripts --no-progress --prefer-dist
+        working-directory: ./src
+      - name: Check Layer Lint
+        run: php vendor/bin/deptrac analyse
+        working-directory: ./src
 ```
