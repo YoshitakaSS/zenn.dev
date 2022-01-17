@@ -2,7 +2,7 @@
 title: "レイヤードアーキテクチャのコード品質を守りたい！"
 emoji: "🛡"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["CI", "PHP", "Laravel", "GitHubActions"]
+topics: ["CI", "PHP", "Laravel", "GitHubActions", "DDD"]
 published: true
 ---
 
@@ -101,8 +101,7 @@ touch ./src/depfile.yml
 ```
 
 公式サイトを元に、以下な中身で`depfile.yml`を作成する
-```yml
-# depfile.yaml
+```yml:depfile.yaml
 paths:
   - ./app
 exclude_files:
