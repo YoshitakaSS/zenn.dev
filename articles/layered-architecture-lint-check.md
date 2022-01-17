@@ -1,5 +1,5 @@
 ---
-title: "レイヤードアーキテクチャのコード品質を守りたい！"
+title: "アーキテクチャのコード品質を守りたい！"
 emoji: "🛡"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["CI", "PHP", "Laravel", "GitHubActions", "DDD"]
