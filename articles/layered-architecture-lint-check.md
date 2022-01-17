@@ -3,7 +3,7 @@ title: "レイヤードアーキテクチャのコード品質を守りたい！
 emoji: "🛡"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["CI", "PHP", "Laravel", "GitHubActions"]
-published: false
+published: true
 ---
 
 自称コード品質保全委員会です！
