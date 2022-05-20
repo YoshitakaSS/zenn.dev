@@ -253,7 +253,7 @@ jobs:
         id: coverage-summary
         uses: juliangruber/read-file-action@v1
         with:
-          path: ./src/storage/logs/coverage-summary.log
+          path: storage/logs/coverage-summary.log
 
       - name: Comment Coverage Summary
         uses: marocchino/sticky-pull-request-comment@v2
@@ -268,7 +268,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage-report
-          path: ./src/storage/logs/coverage-summary.log
+          path: storage/logs/coverage-summary.log
 ```
 
 #### 最後に
