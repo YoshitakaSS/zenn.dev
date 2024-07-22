@@ -2,8 +2,8 @@
 title: "管理画面やサービスを簡易的に多言語化しつつ、ユビキタス言語も守りたい"
 emoji: "🌊"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["JavaScript", "GAS", "i18n"]
-published: false
+topics: ["JavaScript", "GAS", "i18n", "Vue.js"]
+published: true
 ---
 
 **サービス・システムの多言語化を皆さんどうやっていますか？**
