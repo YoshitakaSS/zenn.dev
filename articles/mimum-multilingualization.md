@@ -37,7 +37,12 @@ published: false
 
 ## 結論： 軽度のプロダクトにおける多言語化ならこうする
 
-- GoogleSpreadSheetは[こちら]()
+- GoogleSpreadSheetは[こちら](https://docs.google.com/spreadsheets/d/1we96NQHCsvPllyP4GsjeRJg26iwnDhhkZImBcRrId8s/edit?usp=sharing)
+
+:::message alert
+GASの設定はしておりません   
+各自のDriveなどにダウンロードした上で実行してください
+:::
 
 ### シートの説明
 
