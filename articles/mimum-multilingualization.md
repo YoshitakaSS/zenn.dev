@@ -47,13 +47,13 @@ GASの設定はしておりません
 ### シートの説明
 
 - [sheet1: `original`](#sheet1-original)
-  - ![sheet1](../images/mimum-multilingualization/multi-language_gs_sheet1.png)
+  - ![sheet1](/images/mimum-multilingualization/multi-language_gs_sheet1.png)
 - [sheet2: `ja`](#sheet2-ja)
-  - ![sheet2](../images/mimum-multilingualization/multi-language_gs_sheet2.png)
+  - ![sheet2](/images/mimum-multilingualization/multi-language_gs_sheet2.png)
 - [sheet3: `en`](#sheet3-en)
-  - ![sheet3](../images/mimum-multilingualization/multi-language_gs_sheet3.png)
+  - ![sheet3](/images/mimum-multilingualization/multi-language_gs_sheet3.png)
 - [sheet4: `locales`](#sheet4-locales)
-  - ![sheet4](../images/mimum-multilingualization/multi-language_gs_sheet4.png)
+  - ![sheet4](/images/mimum-multilingualization/multi-language_gs_sheet4.png)
 
 #### sheet1: original
 
@@ -63,7 +63,7 @@ GASの設定はしておりません
 基本的には、これをマスターファイルのシートとして利用します。  
 画像のファイルをファイルと同じディレクトリに格納しておき、チップ形式でどこの画像なのかをプレビュー形式で表示できるようにしておと便利です。  
 
-![sheet1_1](../images/mimum-multilingualization/multi-language_gs_sheet1_1.png)
+![sheet1_1](/images/mimum-multilingualization/multi-language_gs_sheet1_1.png)
 
 実際に格納しておく画像は、以下のようにどこの部分のテキストなのかをわかるようにしておきます。  
 目的としては、前後の文脈を理解しやすいようにするためです。
@@ -73,7 +73,7 @@ GASの設定はしておりません
 出来るだけページごとの方が管理が楽です
 :::
 
-![sheet1_2](../images/mimum-multilingualization/multi-language_gs_sheet1_2.png)
+![sheet1_2](/images/mimum-multilingualization/multi-language_gs_sheet1_2.png)
 
 #### sheet2: `ja`
 
@@ -166,7 +166,7 @@ GASの設定はしておりません
 肝となる部分においては、`en`シートのC列に「Ubiquitous Language」の使用方法なります。  
 画像赤枠部分を最終決定のテキストとしておくことが何より肝心なのかなと。
 
-![h2-2_1](./../images/mimum-multilingualization/h2-2_1.png)
+![h2-2_1](/images/mimum-multilingualization/h2-2_1.png)
 
 例えば、A列の12行目のテキスト「決済」という機械翻訳を使用した場合、B列12行目には "Settlement" というテキストが自動入力されます。[^機械翻訳の表現]  
 ただ、チーム内では "Payment" という表現を一般化しているなどの場合、意味としての理解はできますがニュアンスが異なるといった場合があると思います。  
